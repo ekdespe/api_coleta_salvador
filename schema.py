@@ -2,13 +2,13 @@ import graphene
 import datetime
 from graphene.relay import Node
 from graphene_mongo import MongoengineConnectionField, MongoengineObjectType
-from models import Pontos_Coleta as PontosColetaModel
-import database
+from models import models as m
+from models import database
 
 class Pontos_Coleta(MongoengineObjectType):
 
     class Meta:
-        model = PontosColetaModel
+        model = m.Pontos_Coleta
         interfaces = (Node,)
 
 
@@ -17,7 +17,6 @@ class Pontos_Coleta(MongoengineObjectType):
 class Query(graphene.ObjectType):
     node = Node.Field()
     points = MongoengineConnectionField(Pontos_Coleta)
-    
 
 
 
