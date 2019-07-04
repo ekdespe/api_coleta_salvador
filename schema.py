@@ -4,6 +4,7 @@ from graphene.relay import Node
 from graphene_mongo import MongoengineConnectionField, MongoengineObjectType
 from models import models as m
 from models import database
+import settings
 
 class Pontos_Coleta(MongoengineObjectType):
 
