@@ -27,7 +27,8 @@ import json
 import re
 import pymongo
 import os
-
+import datetime
+import settings
 def extract_payload_from_website():
     """Extrator e parser da página web.
 
@@ -83,10 +84,11 @@ def insert_payload_in_db(payload):
     Os dados são recebidos e a inserção é feita.Os dados da instância devem ser configuradas no arquivo .env que abriga as variáveis de ambiente.
     """
     try:
-        client = pymongo.MongoClient(c.CONFIG['url_database'])
-        db = client[os.getenv('name_database')
-        col = db[cos.getenv('name_collection')
-        col.insert_many(locais)
+    
+        client = pymongo.MongoClient(os.getenv('url_database'))
+        db = client[os.getenv('name_database')]
+        col = db[os.getenv('name_collection')]
+        col.insert_many(payload)
     except Exception as error:
         lg.lg.error('Error! Failed to manipulate database conection')
         lg.lg.error(error)
